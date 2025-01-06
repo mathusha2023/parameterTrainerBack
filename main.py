@@ -10,6 +10,22 @@ def index():
     return "OK"
 
 
+@app.route("/tasks")
+def get_tasks():
+    response = Response()
+    response.headers["Content-Type"] = "application/json"
+    with open(f"tasks/tasks.json") as file:
+        jsn = file.read()
+        response.response = jsn
+    return response
+
+
+@app.route("/tasks/count")
+def get_tasks_count():
+    count = len(os.listdir("tasks"))
+    return jsonify({"count": count})
+
+
 @app.route("/task/<task_id>")
 def get_task_by_id(task_id):
     response = Response()
@@ -22,12 +38,6 @@ def get_task_by_id(task_id):
     response.response = jsn
     file.close()
     return response
-
-
-@app.route("/tasks/count")
-def get_tasks_count():
-    count = len(os.listdir("tasks"))
-    return jsonify({"count": count})
 
 
 if __name__ == "__main__":
