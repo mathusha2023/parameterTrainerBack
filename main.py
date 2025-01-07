@@ -15,8 +15,8 @@ def index():
 @app.route("/tasks")
 def get_tasks():
     response = Response()
-    response.headers["Content-Type"] = "application/json; charset=utf-8"
-    with open(f"tasks/tasks.json") as file:
+    response.headers["Content-Type"] = "application/json"
+    with open(f"tasks/tasks.json", encoding="UTF-8") as file:
         jsn = file.read()
         response.response = jsn
     return response
@@ -31,9 +31,9 @@ def get_tasks_count():
 @app.route("/task/<task_id>")
 def get_task_by_id(task_id):
     response = Response()
-    response.headers["Content-Type"] = "application/json; charset=utf-8"
+    response.headers["Content-Type"] = "application/json"
     try:
-        file = open(f"tasks/{task_id}.json")
+        file = open(f"tasks/{task_id}.json", encoding="UTF-8")
     except FileNotFoundError:
         return abort(404, f"Task with id={task_id} was not found!")
     jsn = file.read()
