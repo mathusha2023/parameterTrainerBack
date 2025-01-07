@@ -1,9 +1,30 @@
 {
+  "id": 0,
   "task": "x2 - 5 = 0",
-  "tooltip": "Внимательно посмотри на правую часть уравнения!",
+  "tooltip": "dfasf dsafasdfads dfasdfasfdasdf!",
   "answer": "graphicXoY",
-  "description": "Этот способ хорош, потому что ты можешь особо не мучиться, построил пару графиков и все, изи 100 баллов на ЕГЭ",
+  "description": "asdfasf sadfasdfasdfasdf ",
   "questions": [
+    {
+      "question": "aaa",
+      "variants": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "answer": "b"
+    },
+    {
+      "question": "aaa",
+      "variants": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "answer": "b"
+    },
     {
       "question": "aaa",
       "variants": [
