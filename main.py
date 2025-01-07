@@ -15,7 +15,7 @@ def index():
 @app.route("/tasks")
 def get_tasks():
     response = Response()
-    response.headers["Content-Type"] = "application/json"
+    response.headers["Content-Type"] = "application/json; charset=utf-8"
     with open(f"tasks/tasks.json", encoding="UTF-8") as file:
         jsn = file.read()
         response.response = jsn
@@ -31,7 +31,7 @@ def get_tasks_count():
 @app.route("/task/<task_id>")
 def get_task_by_id(task_id):
     response = Response()
-    response.headers["Content-Type"] = "application/json"
+    response.headers["Content-Type"] = "application/json; charset=utf-8"
     try:
         file = open(f"tasks/{task_id}.json", encoding="UTF-8")
     except FileNotFoundError:
