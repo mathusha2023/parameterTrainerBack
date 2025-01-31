@@ -1,10 +1,22 @@
 from flask import Flask, jsonify, Response, abort
 import os
+import json
 from dotenv import load_dotenv
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+
+
+def make_all_tasks_file():
+    tasks = []
+    for filename in os.listdir("tasks"):
+        if filename.split(".")[0].isdigit():
+            with open(f"tasks/{filename}", encoding="UTF-8") as file:
+                js = json.load(file)
+                tasks.append(js["task"])
+    with open("tasks/tasks.json", "w", encoding="UTF-8") as file:
+        json.dump(tasks, file, ensure_ascii=False)
 
 
 @app.route("/")
@@ -46,4 +58,5 @@ if __name__ == "__main__":
     load_dotenv()
     host = os.getenv("HOST")
     port = os.getenv("PORT")
+    make_all_tasks_file()
     app.run(host=host, port=port)
